@@ -14,10 +14,10 @@ RUN apt-get update && \
     gdebi -n quarto-linux-amd64.deb && \
     rm quarto-linux-amd64.deb
 
-# Aceite automaticamente o EULA e instale as fontes da Microsoft
-RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
-    apt-get install -y ttf-mscorefonts-installer && \
-    fc-cache -f -v
+# # Aceite automaticamente o EULA e instale as fontes da Microsoft
+# RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
+#     apt-get install -y ttf-mscorefonts-installer && \
+#     fc-cache -f -v
 
 # Copie os arquivos do projeto para o contêiner
 WORKDIR /workspace
