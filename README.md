@@ -3,8 +3,9 @@
 A Docker container for development in R and Quarto.
 
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
-[![Docker Pulls](https://img.shields.io/docker/pulls/marcusramalho/rquartodevcontainer)](https://hub.docker.com/r/marcusramalho/rquartodevcontainer)
-[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/marcusramalho/rquartodevcontainer)](https://hub.docker.com/r/marcusramalho/rquartodevcontainer)
+[![Docker Pulls](https://img.shields.io/docker/pulls/nextmarte/quarto_project)](https://hub.docker.com/r/nextmarte/quarto_project)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/nextmarte/quarto_project)](https://hub.docker.com/r/nextmarte/quarto_project)
+
 
 ## Description
 
