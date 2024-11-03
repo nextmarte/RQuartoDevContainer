@@ -8,17 +8,25 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y wget curl gdebi-core
 
-# Instalar dependências principais, separando cada comando
-RUN apt-get install -y libxml2-dev libcurl4-openssl-dev libssl-dev
-RUN apt-get install -y libatk1.0-0 libatk-bridge2.0-0
-RUN apt-get install -y libxkbcommon0 libxcomposite1 libxdamage1
-RUN apt-get install -y libxrandr2 libgbm1 libasound2
-RUN apt-get install -y libpangocairo-1.0-0 libnss3 libxshmfence1
-RUN apt-get install -y libgtk-3-0 fonts-texgyre
+# Atualizar o sistema e instalar pacotes básicos
+RUN apt-get update && \
+    apt-get install -y wget curl gdebi-core
+
+# Instalar dependências principais, separando cada comando e incluindo `apt-get update` antes de cada instalação
+RUN apt-get update && apt-get install -y libxml2-dev libcurl4-openssl-dev libssl-dev
+RUN apt-get update && apt-get install -y libatk1.0-0 libatk-bridge2.0-0
+RUN apt-get update && apt-get install -y libxkbcommon0 libxcomposite1 libxdamage1
+
+# Tentar novamente a instalação dos pacotes que falharam
+RUN apt-get update && apt-get install -y libxrandr2 libgbm1 libasound2
+
+RUN apt-get update && apt-get install -y libpangocairo-1.0-0 libnss3 libxshmfence1
+RUN apt-get update && apt-get install -y libgtk-3-0 fonts-texgyre
 
 # Download e instalação do Quarto
 RUN curl -L -o quarto-linux-amd64.deb https://quarto.org/download/latest/quarto-linux-amd64.deb && \
     gdebi -n quarto-linux-amd64.deb && rm quarto-linux-amd64.deb
+
 
 
 
