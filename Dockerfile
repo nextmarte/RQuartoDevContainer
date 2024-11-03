@@ -6,13 +6,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Instale o Quarto e dependências do sistema
 RUN apt-get update && \
-    apt-get install -y wget curl gdebi-core \
-    libatk1.0-0 libatk-bridge2.0-0 libxml2-dev libcurl4-openssl-dev libssl-dev \
-    libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libnss3 libxshmfence1 \
+    apt-get install -y wget curl gdebi-core libxml2-dev libcurl4-openssl-dev libssl-dev \
+    libatk1.0-0 libatk-bridge2.0-0 libxkbcommon0 libxcomposite1 libxdamage1 \
+    libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libnss3 libxshmfence1 \
     libgtk-3-0 fonts-texgyre && \
-    curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb && \
+    curl -L -o quarto-linux-amd64.deb https://quarto.org/download/latest/quarto-linux-amd64.deb && \
     gdebi -n quarto-linux-amd64.deb && \
     rm quarto-linux-amd64.deb
+
 
 # # Aceite automaticamente o EULA e instale as fontes da Microsoft
 # RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
