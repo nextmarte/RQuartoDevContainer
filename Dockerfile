@@ -5,14 +5,15 @@ FROM rocker/verse:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Instale o Quarto e dependências do sistema
-RUN apt-get update && \
-    apt-get install -y wget curl gdebi-core libxml2-dev libcurl4-openssl-dev libssl-dev \
+RUN apt-get update && apt-get install -y wget curl gdebi-core libxml2-dev libcurl4-openssl-dev libssl-dev \
     libatk1.0-0 libatk-bridge2.0-0 libxkbcommon0 libxcomposite1 libxdamage1 \
     libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libnss3 libxshmfence1 \
     libgtk-3-0 fonts-texgyre && \
-    curl -L -o quarto-linux-amd64.deb https://quarto.org/download/latest/quarto-linux-amd64.deb && \
-    gdebi -n quarto-linux-amd64.deb && \
-    rm quarto-linux-amd64.deb
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN curl -L -o quarto-linux-amd64.deb https://quarto.org/download/latest/quarto-linux-amd64.deb && \
+    gdebi -n quarto-linux-amd64.deb && rm quarto-linux-amd64.deb
+
 
 
 # # Aceite automaticamente o EULA e instale as fontes da Microsoft
