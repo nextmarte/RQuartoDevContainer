@@ -4,15 +4,15 @@ FROM rocker/verse:latest
 # Defina o frontend do Debian como não interativo
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Instale o Quarto e dependências do sistema
-RUN apt-get update && apt-get install -y wget curl gdebi-core libxml2-dev libcurl4-openssl-dev libssl-dev \
-    libatk1.0-0 libatk-bridge2.0-0 libxkbcommon0 libxcomposite1 libxdamage1 \
-    libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libnss3 libxshmfence1 \
-    libgtk-3-0 fonts-texgyre && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y wget curl gdebi-core && \
+    apt-get install -y libxml2-dev libcurl4-openssl-dev libssl-dev && \
+    apt-get install -y libatk1.0-0 libatk-bridge2.0-0 libxkbcommon0 libxcomposite1 libxdamage1 && \
+    apt-get install -y libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libnss3 libxshmfence1 && \
+    apt-get install -y libgtk-3-0 fonts-texgyre
 
 RUN curl -L -o quarto-linux-amd64.deb https://quarto.org/download/latest/quarto-linux-amd64.deb && \
     gdebi -n quarto-linux-amd64.deb && rm quarto-linux-amd64.deb
+
 
 
 
