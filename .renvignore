@@ -1,0 +1,14 @@
+# Ignorar diretórios comuns que não contêm dependências R
+.git
+.vscode
+.devcontainer
+node_modules
+data
+output
+logs
+
+# Ignorar arquivos específicos
+*.csv
+*.txt
+*.md
+*.rds
